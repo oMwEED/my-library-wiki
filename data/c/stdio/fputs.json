@@ -1,0 +1,73 @@
+{
+  "id": "c/stdio/fputs",
+  "language": "C",
+  "library": "C 標準函式庫",
+  "symbol": "fputs",
+  "title": "fputs()",
+  "summary": "將字串寫入指定的串流，保留原字串的換行設定。",
+  "category": "字元輸出",
+  "keywords": [
+    "stdio.h",
+    "s",
+    "stream",
+    "FILE",
+    "stdout",
+    "stderr",
+    "字串",
+    "文字輸出",
+    "串流"
+  ],
+  "syntax": "#include <stdio.h>\n\nint fputs(const char * restrict s, FILE * restrict stream);",
+  "parameters": [
+    {
+      "name": "s",
+      "type": "const char * restrict",
+      "required": true,
+      "default": null,
+      "description": "指向要寫入的字串。",
+      "accepted_values": "指向可讀取且以 '\\0' 結尾的字串，不能傳入空指標。",
+      "notes": [
+        "若需要換行，可在字串中明確加入 '\\n'。"
+      ]
+    },
+    {
+      "name": "stream",
+      "type": "FILE * restrict",
+      "required": true,
+      "default": null,
+      "description": "指定寫入目的地。",
+      "accepted_values": "指向有效、可寫入且可用於字元輸出的串流，例如 stdout、stderr 或以寫入模式開啟的檔案。",
+      "example_id": "stderr"
+    }
+  ],
+  "returns": {
+    "type": "int",
+    "description": "成功時回傳非負整數，發生寫入錯誤時回傳 EOF。標準未指定成功時的確切數值。"
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "在同一行接續寫入",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    if (fputs(\"Hello\", stdout) == EOF ||\n        fputs(\", C!\\n\", stdout) == EOF) {\n        return 1;\n    }\n    return 0;\n}",
+      "output": "Hello, C!"
+    },
+    {
+      "id": "stderr",
+      "title": "寫入標準錯誤輸出（stderr）",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    return fputs(\"Warning\\n\", stderr) == EOF;\n}",
+      "output": "Warning"
+    }
+  ],
+  "notes": [
+    "fputs() 不會寫入字串結尾的空字元，也不會自行換行。",
+    "本頁依據 WG14 的 C23 工作草案 N3096 第 7.23.7.4 節。"
+  ],
+  "related_ids": [
+    "c/stdio/puts"
+  ],
+  "source": {
+    "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3096.pdf",
+    "library_version": "C23",
+    "checked_at": "2026-11-17"
+  }
+}

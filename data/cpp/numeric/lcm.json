@@ -1,0 +1,67 @@
+{
+  "id": "cpp/numeric/lcm",
+  "language": "C++",
+  "library": "C++ 標準函式庫",
+  "symbol": "std::lcm",
+  "title": "std::lcm()",
+  "summary": "計算兩個整數的最小公倍數。",
+  "category": "整數運算",
+  "keywords": [
+    "numeric",
+    "lcm",
+    "m",
+    "n",
+    "最小公倍數",
+    "least common multiple"
+  ],
+  "syntax": "// <numeric>\ntemplate<class M, class N>\nconstexpr std::common_type_t<M, N> std::lcm(M m, N n);",
+  "parameters": [
+    {
+      "name": "m",
+      "type": "M",
+      "required": true,
+      "default": null,
+      "description": "第一個整數。",
+      "accepted_values": "整數型別，排除 bool 及其 const、volatile 版本。|m| 必須可用回傳型別表示。"
+    },
+    {
+      "name": "n",
+      "type": "N",
+      "required": true,
+      "default": null,
+      "description": "第二個整數。",
+      "accepted_values": "整數型別，排除 bool 及其 const、volatile 版本。|n| 必須可用回傳型別表示。",
+      "example_id": "zero"
+    }
+  ],
+  "returns": {
+    "type": "std::common_type_t<M, N>",
+    "description": "任一引數為 0 時回傳 0。其餘情況回傳 |m| 與 |n| 的最小公倍數。"
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "求兩個正整數的最小公倍數",
+      "code": "#include <iostream>\n#include <numeric>\n\nint main() {\n    std::cout << std::lcm(6, 8) << '\\n';\n}",
+      "output": "24"
+    },
+    {
+      "id": "zero",
+      "title": "第二個引數為 0",
+      "code": "#include <iostream>\n#include <numeric>\n\nint main() {\n    std::cout << std::lcm(-6, 0) << '\\n';\n}",
+      "output": "0"
+    }
+  ],
+  "notes": [
+    "位於 <numeric>。兩個引數的絕對值及最小公倍數都必須在回傳型別的表示範圍內。此函式不拋出例外。",
+    "本頁依據 WG21 的 C++23 工作草案 N4950 第 27.10.15 節。"
+  ],
+  "related_ids": [
+    "cpp/numeric/gcd"
+  ],
+  "source": {
+    "url": "https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/n4950.pdf",
+    "library_version": "C++23",
+    "checked_at": "2026-11-17"
+  }
+}

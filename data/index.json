@@ -1,0 +1,257 @@
+{
+  "libraries": [
+    {
+      "name": "NumPy",
+      "description": "多維陣列與數值運算，涵蓋統計、線性代數及陣列操作。"
+    },
+    {
+      "name": "Pandas",
+      "description": "以 DataFrame 與 Series 讀取、整理和分析表格資料。"
+    },
+    {
+      "name": "Matplotlib",
+      "description": "以 Python 繪製折線、散點及其他資料視覺化圖表。"
+    },
+    {
+      "name": "C 標準函式庫",
+      "description": "提供字元與檔案讀寫、字串處理等 C 基礎功能。"
+    },
+    {
+      "name": "C++ 標準函式庫",
+      "description": "提供泛型演算法、容器與數值運算的 C++ 標準元件。"
+    },
+    {
+      "name": "Java 標準函式庫",
+      "description": "Java SE 內建的集合、字串與其他通用 API。"
+    }
+  ],
+  "functions": [
+    {
+      "id": "python/numpy/mean",
+      "language": "Python",
+      "library": "NumPy",
+      "symbol": "numpy.mean",
+      "title": "numpy.mean()",
+      "summary": "計算陣列元素沿指定軸的算術平均值。",
+      "category": "統計運算",
+      "keywords": [
+        "a",
+        "axis",
+        "dtype",
+        "out",
+        "keepdims",
+        "where",
+        "平均",
+        "平均值",
+        "布林遮罩"
+      ],
+      "path": "data/python/numpy/mean.json"
+    },
+    {
+      "id": "python/pandas/read-csv",
+      "language": "Python",
+      "library": "Pandas",
+      "symbol": "pandas.read_csv",
+      "title": "pandas.read_csv()",
+      "summary": "讀取 CSV 格式資料，轉成 DataFrame。",
+      "category": "資料讀寫",
+      "keywords": [
+        "filepath_or_buffer",
+        "sep",
+        "delimiter",
+        "header",
+        "names",
+        "index_col",
+        "usecols",
+        "dtype",
+        "engine",
+        "converters",
+        "true_values",
+        "false_values",
+        "skipinitialspace",
+        "skiprows",
+        "skipfooter",
+        "nrows",
+        "na_values",
+        "keep_default_na",
+        "na_filter",
+        "skip_blank_lines",
+        "parse_dates",
+        "date_format",
+        "dayfirst",
+        "cache_dates",
+        "iterator",
+        "chunksize",
+        "compression",
+        "thousands",
+        "decimal",
+        "lineterminator",
+        "quotechar",
+        "quoting",
+        "doublequote",
+        "escapechar",
+        "comment",
+        "encoding",
+        "encoding_errors",
+        "dialect",
+        "on_bad_lines",
+        "low_memory",
+        "memory_map",
+        "float_precision",
+        "storage_options",
+        "dtype_backend",
+        "逗號分隔",
+        "文字檔",
+        "分隔符號",
+        "欄位",
+        "缺漏值"
+      ],
+      "path": "data/python/pandas/read-csv.json"
+    },
+    {
+      "id": "python/matplotlib/plot",
+      "language": "Python",
+      "library": "Matplotlib",
+      "symbol": "matplotlib.pyplot.plot",
+      "title": "matplotlib.pyplot.plot()",
+      "summary": "依據 x、y 資料繪製折線或標記。",
+      "category": "資料視覺化",
+      "keywords": [
+        "x",
+        "y",
+        "fmt",
+        "scalex",
+        "scaley",
+        "data",
+        "**kwargs",
+        "折線圖",
+        "線條",
+        "標記",
+        "linewidth",
+        "marker",
+        "color",
+        "label",
+        "args"
+      ],
+      "path": "data/python/matplotlib/plot.json"
+    },
+    {
+      "id": "c/stdio/puts",
+      "language": "C",
+      "library": "C 標準函式庫",
+      "symbol": "puts",
+      "title": "puts()",
+      "summary": "將字串輸出到標準輸出，並在結尾加上換行。",
+      "category": "字元輸出",
+      "keywords": [
+        "stdio.h",
+        "s",
+        "stdout",
+        "字串",
+        "標準輸出",
+        "換行"
+      ],
+      "path": "data/c/stdio/puts.json"
+    },
+    {
+      "id": "c/stdio/fputs",
+      "language": "C",
+      "library": "C 標準函式庫",
+      "symbol": "fputs",
+      "title": "fputs()",
+      "summary": "將字串寫入指定的串流，保留原字串的換行設定。",
+      "category": "字元輸出",
+      "keywords": [
+        "stdio.h",
+        "s",
+        "stream",
+        "FILE",
+        "stdout",
+        "stderr",
+        "字串",
+        "文字輸出",
+        "串流"
+      ],
+      "path": "data/c/stdio/fputs.json"
+    },
+    {
+      "id": "cpp/numeric/gcd",
+      "language": "C++",
+      "library": "C++ 標準函式庫",
+      "symbol": "std::gcd",
+      "title": "std::gcd()",
+      "summary": "計算兩個整數的最大公因數。",
+      "category": "整數運算",
+      "keywords": [
+        "numeric",
+        "gcd",
+        "m",
+        "n",
+        "最大公因數",
+        "最大公約數",
+        "greatest common divisor"
+      ],
+      "path": "data/cpp/numeric/gcd.json"
+    },
+    {
+      "id": "cpp/numeric/lcm",
+      "language": "C++",
+      "library": "C++ 標準函式庫",
+      "symbol": "std::lcm",
+      "title": "std::lcm()",
+      "summary": "計算兩個整數的最小公倍數。",
+      "category": "整數運算",
+      "keywords": [
+        "numeric",
+        "lcm",
+        "m",
+        "n",
+        "最小公倍數",
+        "least common multiple"
+      ],
+      "path": "data/cpp/numeric/lcm.json"
+    },
+    {
+      "id": "java/collections/reverse",
+      "language": "Java",
+      "library": "Java 標準函式庫",
+      "symbol": "java.util.Collections.reverse",
+      "title": "Collections.reverse()",
+      "summary": "就地反轉 List 中元素的順序。",
+      "category": "集合操作",
+      "keywords": [
+        "java.util",
+        "Collections",
+        "list",
+        "reverse",
+        "List",
+        "反轉",
+        "反向",
+        "清單"
+      ],
+      "path": "data/java/collections/reverse.json"
+    },
+    {
+      "id": "java/collections/swap",
+      "language": "Java",
+      "library": "Java 標準函式庫",
+      "symbol": "java.util.Collections.swap",
+      "title": "Collections.swap()",
+      "summary": "交換 List 中指定兩個索引處的元素。",
+      "category": "集合操作",
+      "keywords": [
+        "java.util",
+        "Collections",
+        "list",
+        "swap",
+        "List",
+        "i",
+        "j",
+        "交換",
+        "索引",
+        "清單"
+      ],
+      "path": "data/java/collections/swap.json"
+    }
+  ]
+}

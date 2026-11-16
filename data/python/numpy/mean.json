@@ -1,0 +1,120 @@
+{
+  "id": "python/numpy/mean",
+  "language": "Python",
+  "library": "NumPy",
+  "symbol": "numpy.mean",
+  "title": "numpy.mean()",
+  "summary": "計算陣列元素沿指定軸的算術平均值。",
+  "syntax": "numpy.mean(a, axis=None, dtype=None, out=None, keepdims=<no value>, *, where=<no value>)",
+  "parameters": [
+    {
+      "name": "a",
+      "type": "array_like",
+      "required": true,
+      "default": null,
+      "description": "要計算平均值的陣列或類陣列資料。",
+      "accepted_values": "數值陣列，或 NumPy 可轉換成陣列的資料。"
+    },
+    {
+      "name": "axis",
+      "type": "None | int | tuple[int, ...]",
+      "required": false,
+      "default": "None",
+      "description": "指定計算方向；None 表示對全部元素計算平均。",
+      "accepted_values": "None、單一整數軸，或由整數軸組成的 tuple。",
+      "notes": [
+        "指定 tuple 時會沿多個軸一起計算。"
+      ],
+      "example_id": "axis"
+    },
+    {
+      "name": "dtype",
+      "type": "data-type",
+      "required": false,
+      "default": "None",
+      "description": "計算時使用的資料型別；整數輸入預設以 float64 計算。",
+      "accepted_values": "NumPy 可辨識的資料型別。",
+      "notes": [
+        "浮點輸入預設沿用輸入型別，float16 會以 float32 累加。"
+      ]
+    },
+    {
+      "name": "out",
+      "type": "ndarray",
+      "required": false,
+      "default": "None",
+      "description": "指定儲存結果的輸出陣列。",
+      "accepted_values": "None，或形狀與預期輸出一致的 ndarray。",
+      "notes": [
+        "需要時會將結果轉成輸出陣列的型別。"
+      ]
+    },
+    {
+      "name": "keepdims",
+      "type": "bool",
+      "required": false,
+      "default": "<no value>",
+      "description": "設為 True 時，保留被縮減的維度（長度為 1）。",
+      "accepted_values": "True 或 False。",
+      "notes": [
+        "省略時不會向 ndarray 子類別傳遞 keepdims，明確傳值時則會。"
+      ]
+    },
+    {
+      "name": "where",
+      "type": "array_like[bool]",
+      "required": false,
+      "default": "<no value>",
+      "description": "指定要納入平均值計算的元素。",
+      "accepted_values": "可廣播到輸入形狀的布林遮罩。",
+      "example_id": "where"
+    }
+  ],
+  "returns": {
+    "type": "ndarray 或 NumPy 純量",
+    "description": "回傳各指定軸的平均值；實際型別取決於輸入與 dtype 等參數。"
+  },
+  "examples": [
+    {
+      "title": "計算全部元素及各欄平均",
+      "code": "import numpy as np\n\na = np.array([[1, 2], [3, 4]])\nprint(np.mean(a))\nprint(np.mean(a, axis=0))",
+      "output": "2.5\n[2. 3.]",
+      "id": "basic"
+    },
+    {
+      "id": "axis",
+      "title": "沿列計算各列平均",
+      "code": "import numpy as np\n\na = np.array([[1, 2], [3, 4]])\nprint(np.mean(a, axis=1))",
+      "output": "[1.5 3.5]"
+    },
+    {
+      "id": "where",
+      "title": "只計算遮罩選中的元素",
+      "code": "import numpy as np\n\na = np.array([[5, 9, 13], [14, 10, 12], [11, 15, 19]])\nprint(np.mean(a, where=[[True], [False], [False]]))",
+      "output": "9.0"
+    }
+  ],
+  "notes": [
+    "對浮點數資料，累加精度可能影響結果；必要時可指定 dtype。"
+  ],
+  "source": {
+    "url": "https://numpy.org/doc/2.5/reference/generated/numpy.mean.html",
+    "library_version": "2.5",
+    "checked_at": "2026-11-16"
+  },
+  "category": "統計運算",
+  "syntax_short": "numpy.mean(a, ...)",
+  "syntax_full": "numpy.mean(a, axis=None, dtype=None, out=None, keepdims=<no value>, *, where=<no value>)",
+  "keywords": [
+    "a",
+    "axis",
+    "dtype",
+    "out",
+    "keepdims",
+    "where",
+    "平均",
+    "平均值",
+    "布林遮罩"
+  ],
+  "related_ids": []
+}

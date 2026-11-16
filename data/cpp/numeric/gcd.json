@@ -1,0 +1,68 @@
+{
+  "id": "cpp/numeric/gcd",
+  "language": "C++",
+  "library": "C++ 標準函式庫",
+  "symbol": "std::gcd",
+  "title": "std::gcd()",
+  "summary": "計算兩個整數的最大公因數。",
+  "category": "整數運算",
+  "keywords": [
+    "numeric",
+    "gcd",
+    "m",
+    "n",
+    "最大公因數",
+    "最大公約數",
+    "greatest common divisor"
+  ],
+  "syntax": "// <numeric>\ntemplate<class M, class N>\nconstexpr std::common_type_t<M, N> std::gcd(M m, N n);",
+  "parameters": [
+    {
+      "name": "m",
+      "type": "M",
+      "required": true,
+      "default": null,
+      "description": "第一個整數。",
+      "accepted_values": "整數型別，排除 bool 及其 const、volatile 版本。|m| 必須可用回傳型別表示。",
+      "example_id": "negative"
+    },
+    {
+      "name": "n",
+      "type": "N",
+      "required": true,
+      "default": null,
+      "description": "第二個整數。",
+      "accepted_values": "整數型別，排除 bool 及其 const、volatile 版本。|n| 必須可用回傳型別表示。"
+    }
+  ],
+  "returns": {
+    "type": "std::common_type_t<M, N>",
+    "description": "回傳 |m| 與 |n| 的最大公因數，兩者皆為 0 時回傳 0。"
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "求兩個正整數的最大公因數",
+      "code": "#include <iostream>\n#include <numeric>\n\nint main() {\n    std::cout << std::gcd(48, 18) << '\\n';\n}",
+      "output": "6"
+    },
+    {
+      "id": "negative",
+      "title": "傳入負整數與不同整數型別",
+      "code": "#include <iostream>\n#include <numeric>\n\nint main() {\n    std::cout << std::gcd(-20, 30L) << '\\n';\n}",
+      "output": "10"
+    }
+  ],
+  "notes": [
+    "位於 <numeric>。不拋出例外。若型別或數值不滿足上述條件，不可依賴結果。例如 int 最小值的絕對值無法用 int 表示。",
+    "本頁依據 WG21 的 C++23 工作草案 N4950 第 27.10.14 節。"
+  ],
+  "related_ids": [
+    "cpp/numeric/lcm"
+  ],
+  "source": {
+    "url": "https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/n4950.pdf",
+    "library_version": "C++23",
+    "checked_at": "2026-11-17"
+  }
+}

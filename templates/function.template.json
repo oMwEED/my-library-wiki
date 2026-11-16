@@ -1,0 +1,60 @@
+{
+  "id": "python/library/function-name",
+  "language": "Python",
+  "library": "Library",
+  "symbol": "library.function_name",
+  "title": "library.function_name()",
+  "summary": "請填寫經官方查證的繁體中文用途。",
+  "category": "請填寫功能分類",
+  "keywords": [
+    "value",
+    "option"
+  ],
+  "syntax": "library.function_name(value, *, option=None)",
+  "syntax_short": "library.function_name(value, ...)",
+  "syntax_full": "library.function_name(value, *, option=None)",
+  "parameters": [
+    {
+      "name": "value",
+      "type": "object",
+      "required": true,
+      "default": null,
+      "description": "請填寫參數用途。",
+      "accepted_values": "請填寫官方列明的值或限制。",
+      "notes": []
+    },
+    {
+      "name": "option",
+      "type": "object | None",
+      "required": false,
+      "default": "None",
+      "description": "請填寫參數用途。",
+      "example_id": "option-example"
+    }
+  ],
+  "returns": {
+    "type": "object",
+    "description": "請填寫回傳值說明。"
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "基本用法",
+      "code": "# 請填入可執行的程式碼",
+      "output": "請填入驗證後的輸出"
+    },
+    {
+      "id": "option-example",
+      "title": "指定 option",
+      "code": "# 請填入可執行的參數範例",
+      "output": "請填入驗證後的輸出"
+    }
+  ],
+  "notes": [],
+  "related_ids": [],
+  "source": {
+    "url": "https://example.org/official-api-documentation",
+    "library_version": "unverified",
+    "checked_at": "YYYY-MM-DD"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "c/stdio/puts",
+  "language": "C",
+  "library": "C 標準函式庫",
+  "symbol": "puts",
+  "title": "puts()",
+  "summary": "將字串輸出到標準輸出，並在結尾加上換行。",
+  "category": "字元輸出",
+  "keywords": [
+    "stdio.h",
+    "s",
+    "stdout",
+    "字串",
+    "標準輸出",
+    "換行"
+  ],
+  "syntax": "#include <stdio.h>\n\nint puts(const char *s);",
+  "parameters": [
+    {
+      "name": "s",
+      "type": "const char *",
+      "required": true,
+      "default": null,
+      "description": "指向要輸出的字串。",
+      "accepted_values": "指向可讀取且以空字元 '\\0' 結尾的字串，不能傳入空指標。",
+      "example_id": "literal"
+    }
+  ],
+  "returns": {
+    "type": "int",
+    "description": "成功時回傳非負整數。發生寫入錯誤時回傳 EOF。"
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "各輸出一行",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    if (puts(\"Hello\") == EOF || puts(\"C!\") == EOF) {\n        return 1;\n    }\n    return 0;\n}",
+      "output": "Hello\nC!"
+    },
+    {
+      "id": "literal",
+      "title": "直接輸出含百分號的字串",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    return puts(\"Progress: 100%\") == EOF;\n}",
+      "output": "Progress: 100%"
+    }
+  ],
+  "notes": [
+    "字串結尾的空字元不會寫入。puts() 會另外加上一個換行。",
+    "字串依原內容輸出，其中的百分號不會被解讀為格式指示。",
+    "若要指定輸出串流，使用 fputs()。本頁依據 WG14 的 C23 工作草案 N3096 第 7.23.7.9 節。"
+  ],
+  "related_ids": [
+    "c/stdio/fputs"
+  ],
+  "source": {
+    "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3096.pdf",
+    "library_version": "C23",
+    "checked_at": "2026-11-17"
+  }
+}

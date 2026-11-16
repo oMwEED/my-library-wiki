@@ -1,0 +1,85 @@
+{
+  "id": "java/collections/swap",
+  "language": "Java",
+  "library": "Java 標準函式庫",
+  "symbol": "java.util.Collections.swap",
+  "title": "Collections.swap()",
+  "summary": "交換 List 中指定兩個索引處的元素。",
+  "category": "集合操作",
+  "keywords": [
+    "java.util",
+    "Collections",
+    "list",
+    "swap",
+    "List",
+    "i",
+    "j",
+    "交換",
+    "索引",
+    "清單"
+  ],
+  "syntax": "public static void swap(List<?> list, int i, int j)",
+  "parameters": [
+    {
+      "name": "list",
+      "type": "List<?>",
+      "required": true,
+      "default": null,
+      "description": "要交換元素的清單。",
+      "accepted_values": "非 null 的 List，須支援 set 操作以替換元素。"
+    },
+    {
+      "name": "i",
+      "type": "int",
+      "required": true,
+      "default": null,
+      "description": "第一個元素的索引。",
+      "accepted_values": "0 <= i < list.size()。",
+      "notes": [
+        "索引從 0 開始，超出範圍會拋出 IndexOutOfBoundsException。"
+      ]
+    },
+    {
+      "name": "j",
+      "type": "int",
+      "required": true,
+      "default": null,
+      "description": "第二個元素的索引。",
+      "accepted_values": "0 <= j < list.size()。可與 i 相同。",
+      "notes": [
+        "索引從 0 開始，超出範圍會拋出 IndexOutOfBoundsException。"
+      ],
+      "example_id": "same-index"
+    }
+  ],
+  "returns": {
+    "type": "void",
+    "description": "直接更新傳入清單，兩個有效索引相同時元素順序維持原樣。"
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "交換最前與最後的元素",
+      "code": "import java.util.ArrayList;\nimport java.util.Collections;\nimport java.util.List;\n\nclass Main {\n    public static void main(String[] args) {\n        var items = new ArrayList<>(List.of(\"A\", \"B\", \"C\"));\n        Collections.swap(items, 0, 2);\n        System.out.println(items);\n    }\n}",
+      "output": "[C, B, A]"
+    },
+    {
+      "id": "same-index",
+      "title": "使用相同的兩個索引",
+      "code": "import java.util.ArrayList;\nimport java.util.Collections;\nimport java.util.List;\n\nclass Main {\n    public static void main(String[] args) {\n        var items = new ArrayList<>(List.of(\"A\", \"B\", \"C\"));\n        Collections.swap(items, 1, 1);\n        System.out.println(items);\n    }\n}",
+      "output": "[A, B, C]"
+    }
+  ],
+  "notes": [
+    "定義於 java.util.Collections。傳入 null 會拋出 NullPointerException。",
+    "若清單不支援所需的修改操作，可能拋出 UnsupportedOperationException。索引相同時仍須確認所用清單實作支援這個呼叫。"
+  ],
+  "related_ids": [
+    "java/collections/reverse"
+  ],
+  "source": {
+    "url": "https://docs.oracle.com/en/java/javase/27/docs/api/java.base/java/util/Collections.html#swap(java.util.List,int,int)",
+    "library_version": "Java SE 27",
+    "checked_at": "2026-11-17"
+  }
+}

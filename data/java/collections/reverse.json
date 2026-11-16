@@ -1,0 +1,64 @@
+{
+  "id": "java/collections/reverse",
+  "language": "Java",
+  "library": "Java 標準函式庫",
+  "symbol": "java.util.Collections.reverse",
+  "title": "Collections.reverse()",
+  "summary": "就地反轉 List 中元素的順序。",
+  "category": "集合操作",
+  "keywords": [
+    "java.util",
+    "Collections",
+    "list",
+    "reverse",
+    "List",
+    "反轉",
+    "反向",
+    "清單"
+  ],
+  "syntax": "public static void reverse(List<?> list)",
+  "parameters": [
+    {
+      "name": "list",
+      "type": "List<?>",
+      "required": true,
+      "default": null,
+      "description": "要就地反轉的清單。",
+      "accepted_values": "非 null 的 List，須支援就地替換元素。",
+      "notes": [
+        "若清單或其清單迭代器不支援所需的 set 操作，可能拋出 UnsupportedOperationException。"
+      ],
+      "example_id": "fixed-size"
+    }
+  ],
+  "returns": {
+    "type": "void",
+    "description": "直接改變傳入清單的元素順序。"
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "反轉可修改的 ArrayList",
+      "code": "import java.util.ArrayList;\nimport java.util.Collections;\nimport java.util.List;\n\nclass Main {\n    public static void main(String[] args) {\n        var names = new ArrayList<>(List.of(\"A\", \"B\", \"C\"));\n        Collections.reverse(names);\n        System.out.println(names);\n    }\n}",
+      "output": "[C, B, A]"
+    },
+    {
+      "id": "fixed-size",
+      "title": "反轉長度固定、可替換元素的清單",
+      "code": "import java.util.Arrays;\nimport java.util.Collections;\n\nclass Main {\n    public static void main(String[] args) {\n        Integer[] values = {10, 20, 30};\n        Collections.reverse(Arrays.asList(values));\n        System.out.println(Arrays.toString(values));\n    }\n}",
+      "output": "[30, 20, 10]"
+    }
+  ],
+  "notes": [
+    "定義於 java.util.Collections，執行時間為線性。",
+    "傳入 null 會拋出 NullPointerException。若只需要反向檢視，可使用 List.reversed()。"
+  ],
+  "related_ids": [
+    "java/collections/swap"
+  ],
+  "source": {
+    "url": "https://docs.oracle.com/en/java/javase/27/docs/api/java.base/java/util/Collections.html#reverse(java.util.List)",
+    "library_version": "Java SE 27",
+    "checked_at": "2026-11-17"
+  }
+}

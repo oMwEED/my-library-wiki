@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="用繁體中文查詢函式庫的語法、參數、回傳值與範例。" />
+  <title>Library Wiki — 函式文件索引</title>
+  <script src="./js/theme.js"></script>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="icon" href="data:," />
+  <script type="module" src="./js/app.js?v=2"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./index.html">Library Wiki</a>
+      <form class="search-form top-search" action="./index.html" role="search" aria-label="全站搜尋" data-search>
+        <input type="search" name="q" aria-label="搜尋全站函式" placeholder="搜尋函式" autocomplete="off" enterkeyhint="search" />
+      </form>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="深色模式" aria-pressed="false">深色</button>
+    </div>
+  </header>
+  <main class="main-content" id="wiki-content">
+    <section class="hero" id="home-search" aria-labelledby="home-title" hidden>
+      <h1 id="home-title">Library Wiki</h1>
+      <form class="search-form hero-search" action="./index.html" role="search" aria-label="首頁搜尋" data-search>
+        <input type="search" name="q" aria-label="搜尋首頁函式" placeholder="搜尋函式、參數或用途" autocomplete="off" enterkeyhint="search" />
+        <button type="submit">搜尋</button>
+      </form>
+    </section>
+    <div id="wiki-view"><p class="notice" role="status">正在載入函式資料…</p></div>
+  </main>
+</body>
+</html>

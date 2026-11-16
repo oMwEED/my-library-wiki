@@ -1,0 +1,130 @@
+{
+  "id": "python/matplotlib/plot",
+  "language": "Python",
+  "library": "Matplotlib",
+  "symbol": "matplotlib.pyplot.plot",
+  "title": "matplotlib.pyplot.plot()",
+  "summary": "依據 x、y 資料繪製折線或標記。",
+  "syntax": "matplotlib.pyplot.plot(*args, scalex=True, scaley=True, data=None, **kwargs)",
+  "parameters": [
+    {
+      "name": "x",
+      "type": "array-like | float",
+      "required": false,
+      "default": "range(len(y))",
+      "description": "指定橫軸座標。",
+      "accepted_values": "純量、一維或二維類陣列資料。",
+      "notes": [
+        "只能以位置引數傳入。若 x、y 都是二維，形狀必須相同。"
+      ],
+      "example_id": "implicit-x"
+    },
+    {
+      "name": "y",
+      "type": "array-like | float",
+      "required": true,
+      "default": null,
+      "description": "指定縱軸座標。",
+      "accepted_values": "純量、一維或二維類陣列資料。",
+      "notes": [
+        "只能以位置引數傳入。二維資料每欄各繪成一條線。"
+      ]
+    },
+    {
+      "name": "fmt",
+      "type": "str",
+      "required": false,
+      "default": null,
+      "description": "位置參數，可用縮寫設定顏色、線型與標記，例如 'ro-'。",
+      "accepted_values": "可組合標記、線型與顏色。完整縮寫表見官方文件。",
+      "notes": [
+        "同時傳入衝突的關鍵字設定時，以關鍵字設定為準。"
+      ]
+    },
+    {
+      "name": "scalex",
+      "type": "bool",
+      "required": false,
+      "default": "True",
+      "description": "是否依 x 資料自動調整座標軸範圍。",
+      "accepted_values": "True 或 False。"
+    },
+    {
+      "name": "scaley",
+      "type": "bool",
+      "required": false,
+      "default": "True",
+      "description": "是否依 y 資料自動調整座標軸範圍。",
+      "accepted_values": "True 或 False。"
+    },
+    {
+      "name": "data",
+      "type": "indexable object",
+      "required": false,
+      "default": "None",
+      "description": "提供可用欄位名稱索引的資料來源。",
+      "accepted_values": "None 或可依名稱索引的物件，例如 dict 或 DataFrame。",
+      "notes": [
+        "在單次呼叫中提供多組位置資料時，不可同時使用 data。"
+      ]
+    },
+    {
+      "name": "**kwargs",
+      "type": "Line2D properties",
+      "required": false,
+      "default": null,
+      "description": "其他線條設定，例如 linewidth、marker 與 color。",
+      "accepted_values": "接受官方列出的 Line2D 屬性。",
+      "notes": [
+        "一次繪製多條線時，關鍵字屬性會套用到所有資料組。"
+      ]
+    }
+  ],
+  "returns": {
+    "type": "list[matplotlib.lines.Line2D]",
+    "description": "代表繪製線條的 Line2D 物件列表。"
+  },
+  "examples": [
+    {
+      "title": "繪製基本折線",
+      "code": "import matplotlib.pyplot as plt\n\nx = [1, 2, 3, 4]\ny = [1, 4, 9, 16]\nplt.plot(x, y, 'o-', label='square')\nplt.legend()\nplt.show()",
+      "output": "顯示一張圖表：x 為 1～4，y 為 1、4、9、16，各點以線段相連。",
+      "id": "basic"
+    },
+    {
+      "id": "implicit-x",
+      "title": "省略 x，以資料索引作為橫軸",
+      "code": "import matplotlib.pyplot as plt\n\nplt.plot([1, 4, 9], 'r+')\nplt.show()",
+      "output": "圖表以紅色加號標出三個資料點，橫軸座標為 0、1、2。"
+    }
+  ],
+  "notes": [
+    "可以在同一次呼叫中傳入多組 x、y 和 fmt。省略 x 時只傳入 y，或傳入 y 與 fmt。"
+  ],
+  "source": {
+    "url": "https://matplotlib.org/3.11.2/api/_as_gen/matplotlib.pyplot.plot.html",
+    "library_version": "3.11.2",
+    "checked_at": "2026-11-16"
+  },
+  "category": "資料視覺化",
+  "syntax_short": "matplotlib.pyplot.plot(*args, ...)",
+  "syntax_full": "matplotlib.pyplot.plot(*args, scalex=True, scaley=True, data=None, **kwargs)",
+  "keywords": [
+    "x",
+    "y",
+    "fmt",
+    "scalex",
+    "scaley",
+    "data",
+    "**kwargs",
+    "折線圖",
+    "線條",
+    "標記",
+    "linewidth",
+    "marker",
+    "color",
+    "label",
+    "args"
+  ],
+  "related_ids": []
+}

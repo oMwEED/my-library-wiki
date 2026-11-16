@@ -1,0 +1,529 @@
+{
+  "id": "python/pandas/read-csv",
+  "language": "Python",
+  "library": "Pandas",
+  "symbol": "pandas.read_csv",
+  "title": "pandas.read_csv()",
+  "summary": "讀取 CSV 格式資料，轉成 DataFrame。",
+  "syntax": "pandas.read_csv(filepath_or_buffer, ...)",
+  "syntax_note": "精簡語法，請參照完整簽章或官方文件。",
+  "parameters": [
+    {
+      "name": "filepath_or_buffer",
+      "type": "str | os.PathLike | file-like",
+      "required": true,
+      "default": null,
+      "description": "指定 CSV 的來源。",
+      "accepted_values": "本機路徑、受支援的 URL 或有 read() 方法的物件，例如 StringIO。"
+    },
+    {
+      "name": "sep",
+      "type": "str | None",
+      "required": false,
+      "default": "<no_default>",
+      "description": "指定分隔符號，省略時使用逗號。",
+      "accepted_values": "字元、正規表示式或 None。",
+      "notes": [
+        "None 會使用 Python 引擎偵測首筆有效列的分隔符號。正規表示式可能略過引號的界定。"
+      ],
+      "example_id": "sep"
+    },
+    {
+      "name": "delimiter",
+      "type": "str",
+      "required": false,
+      "default": "<no_default>",
+      "description": "指定分隔符號，為 sep 的別名。"
+    },
+    {
+      "name": "header",
+      "type": "int | Sequence[int] | None | 'infer'",
+      "required": false,
+      "default": "'infer'",
+      "description": "指定哪一列作為欄位名稱。",
+      "accepted_values": "從 0 起算的列索引、多列索引、None 或 'infer'。",
+      "notes": [
+        "'infer' 在未提供 names 時等同 0，提供 names 時等同 None。索引會略過註解列，以及啟用 skip_blank_lines 時的空白列。"
+      ],
+      "example_id": "header"
+    },
+    {
+      "name": "names",
+      "type": "Sequence[Hashable]",
+      "required": false,
+      "default": "<no_default>",
+      "description": "自行指定欄位名稱。",
+      "accepted_values": "不得包含重複名稱。",
+      "notes": [
+        "原檔有標頭且要覆蓋它時，搭配 header=0。"
+      ]
+    },
+    {
+      "name": "index_col",
+      "type": "Hashable | Sequence[Hashable] | bool",
+      "required": false,
+      "default": "None",
+      "description": "把指定欄位用作列索引。",
+      "accepted_values": "欄名、欄位置、其序列、None 或 False。",
+      "notes": [
+        "多欄產生 MultiIndex。False 強制避免將首欄當成索引。"
+      ]
+    },
+    {
+      "name": "usecols",
+      "type": "Sequence[Hashable] | Callable",
+      "required": false,
+      "default": "None",
+      "description": "只載入部分欄位。",
+      "accepted_values": "全為欄位置、全為欄名，或以欄名為輸入的判斷函式。",
+      "notes": [
+        "讀取結果的欄順序不受 usecols 的順序影響。"
+      ],
+      "example_id": "usecols"
+    },
+    {
+      "name": "dtype",
+      "type": "dtype | dict",
+      "required": false,
+      "default": "None",
+      "description": "指定整份資料或各欄位的型別。",
+      "accepted_values": "單一型別，或由欄名對應至型別的字典。",
+      "notes": [
+        "某欄有 converters 時，會使用該轉換函式。"
+      ]
+    },
+    {
+      "name": "engine",
+      "type": "str",
+      "required": false,
+      "default": "None",
+      "description": "指定 CSV 剖析引擎。",
+      "accepted_values": "'c'、'python' 或 'pyarrow'。",
+      "notes": [
+        "各引擎支援的功能不同，例如 skipfooter 不能搭配 C 引擎。"
+      ]
+    },
+    {
+      "name": "converters",
+      "type": "dict[Hashable, Callable]",
+      "required": false,
+      "default": "None",
+      "description": "用函式轉換指定欄位讀到的原始字串。",
+      "accepted_values": "以欄名或欄位置為鍵、轉換函式為值的字典。"
+    },
+    {
+      "name": "true_values",
+      "type": "list",
+      "required": false,
+      "default": "None",
+      "description": "補充要解析為 True 的資料值。"
+    },
+    {
+      "name": "false_values",
+      "type": "list",
+      "required": false,
+      "default": "None",
+      "description": "補充要解析為 False 的資料值。"
+    },
+    {
+      "name": "skipinitialspace",
+      "type": "bool",
+      "required": false,
+      "default": "False",
+      "description": "跳過分隔符號後的空格。",
+      "accepted_values": "True 或 False。"
+    },
+    {
+      "name": "skiprows",
+      "type": "int | list[int] | Callable",
+      "required": false,
+      "default": "None",
+      "description": "跳過檔首一定列數或依列位置略過指定列。",
+      "accepted_values": "列數、從 0 起算的列索引清單，或對列索引回傳布林值的函式。"
+    },
+    {
+      "name": "skipfooter",
+      "type": "int",
+      "required": false,
+      "default": "0",
+      "description": "跳過檔尾指定列數。",
+      "notes": [
+        "C 引擎不支援。"
+      ]
+    },
+    {
+      "name": "nrows",
+      "type": "int",
+      "required": false,
+      "default": "None",
+      "description": "限制讀入的資料列數。",
+      "notes": [
+        "計數排除欄位標頭及標頭之前的列。"
+      ]
+    },
+    {
+      "name": "na_values",
+      "type": "Hashable | Iterable | dict",
+      "required": false,
+      "default": "None",
+      "description": "補充會被判定為缺漏的值。",
+      "accepted_values": "單一值、可迭代值，或按欄位設定的字典。"
+    },
+    {
+      "name": "keep_default_na",
+      "type": "bool",
+      "required": false,
+      "default": "True",
+      "description": "決定是否保留內建的缺漏標記。",
+      "accepted_values": "True 或 False。",
+      "notes": [
+        "設為 False 時僅使用 na_values 指定的值。na_filter=False 時忽略這兩項設定。"
+      ]
+    },
+    {
+      "name": "na_filter",
+      "type": "bool",
+      "required": false,
+      "default": "True",
+      "description": "偵測空字串與其他缺漏標記。",
+      "accepted_values": "True 或 False。"
+    },
+    {
+      "name": "skip_blank_lines",
+      "type": "bool",
+      "required": false,
+      "default": "True",
+      "description": "略過空白列。",
+      "accepted_values": "True 或 False。"
+    },
+    {
+      "name": "parse_dates",
+      "type": "bool | list[Hashable] | None",
+      "required": false,
+      "default": "None",
+      "description": "指定是否解析索引或指定欄位的日期。",
+      "accepted_values": "True 嘗試解析索引，False 停用，清單指定欄位。None 在提供 date_format 時等同 True。",
+      "notes": [
+        "若日期欄或索引因無法解析或混合時區而無法轉換，會保留原值。"
+      ]
+    },
+    {
+      "name": "date_format",
+      "type": "str | dict",
+      "required": false,
+      "default": "None",
+      "description": "指定日期欄位使用的解析格式。",
+      "accepted_values": "strftime 格式、'ISO8601'、'mixed'，或各欄位對應格式的字典。",
+      "notes": [
+        "'mixed' 逐項推斷格式。"
+      ]
+    },
+    {
+      "name": "dayfirst",
+      "type": "bool",
+      "required": false,
+      "default": "False",
+      "description": "解析日期時採用日優先的順序。",
+      "accepted_values": "True 或 False。"
+    },
+    {
+      "name": "cache_dates",
+      "type": "bool",
+      "required": false,
+      "default": "True",
+      "description": "快取重複的日期轉換結果。",
+      "accepted_values": "True 或 False。"
+    },
+    {
+      "name": "iterator",
+      "type": "bool",
+      "required": false,
+      "default": "False",
+      "description": "控制是否回傳 TextFileReader，以便逐段讀取。",
+      "accepted_values": "True 或 False。"
+    },
+    {
+      "name": "chunksize",
+      "type": "int",
+      "required": false,
+      "default": "None",
+      "description": "指定每塊讀入的資料列數。",
+      "notes": [
+        "設定後回傳可迭代的 TextFileReader。"
+      ]
+    },
+    {
+      "name": "compression",
+      "type": "str | dict",
+      "required": false,
+      "default": "'infer'",
+      "description": "指定讀取時的解壓縮方式。",
+      "accepted_values": "None、'infer'、支援的壓縮格式名稱，或附帶 method 的設定字典。",
+      "notes": [
+        "'infer' 可從路徑的副檔名推斷格式。ZIP 或 TAR 壓縮檔只能包含一個資料檔。"
+      ]
+    },
+    {
+      "name": "thousands",
+      "type": "str",
+      "required": false,
+      "default": "None",
+      "description": "指定數值的千位分隔符號。",
+      "accepted_values": "單一字元。"
+    },
+    {
+      "name": "decimal",
+      "type": "str",
+      "required": false,
+      "default": "'.'",
+      "description": "指定小數點字元。",
+      "accepted_values": "單一字元。"
+    },
+    {
+      "name": "lineterminator",
+      "type": "str",
+      "required": false,
+      "default": "None",
+      "description": "指定輸入的換列字元。",
+      "accepted_values": "單一字元。",
+      "notes": [
+        "僅 C 引擎支援。"
+      ]
+    },
+    {
+      "name": "quotechar",
+      "type": "str",
+      "required": false,
+      "default": "'\"'",
+      "description": "指定用來包住欄位文字的引號字元。",
+      "accepted_values": "單一字元。",
+      "notes": [
+        "引號內的分隔符號屬於欄位內容。"
+      ]
+    },
+    {
+      "name": "quoting",
+      "type": "int",
+      "required": false,
+      "default": "0",
+      "description": "控制如何處理欄位引號。",
+      "accepted_values": "0（QUOTE_MINIMAL）、1（QUOTE_ALL）、2（QUOTE_NONNUMERIC）、3（QUOTE_NONE）。"
+    },
+    {
+      "name": "doublequote",
+      "type": "bool",
+      "required": false,
+      "default": "True",
+      "description": "控制是否把已加引號欄位內的兩個連續引號解讀成一個。",
+      "accepted_values": "True 或 False。",
+      "notes": [
+        "quoting 為 QUOTE_NONE 時不適用。"
+      ]
+    },
+    {
+      "name": "escapechar",
+      "type": "str",
+      "required": false,
+      "default": "None",
+      "description": "指定跳脫字元。",
+      "accepted_values": "單一字元。"
+    },
+    {
+      "name": "comment",
+      "type": "str",
+      "required": false,
+      "default": "None",
+      "description": "忽略從註解字元起至列尾的內容。",
+      "accepted_values": "單一字元。",
+      "notes": [
+        "全列註解不計入 header 的列位置，仍計入 skiprows。"
+      ]
+    },
+    {
+      "name": "encoding",
+      "type": "str",
+      "required": false,
+      "default": "None",
+      "description": "指定讀取文字使用的編碼。",
+      "accepted_values": "Python 支援的編碼名稱，例如 'utf-8'。",
+      "notes": [
+        "未設定時預設使用 UTF-8。"
+      ]
+    },
+    {
+      "name": "encoding_errors",
+      "type": "str",
+      "required": false,
+      "default": "'strict'",
+      "description": "控制遇到編碼錯誤時如何處理。",
+      "accepted_values": "Python 支援的錯誤處理模式，例如 'strict'、'ignore' 或 'replace'。"
+    },
+    {
+      "name": "dialect",
+      "type": "str | csv.Dialect",
+      "required": false,
+      "default": "None",
+      "description": "用 CSV 方言設定覆寫一組剖析選項。",
+      "accepted_values": "方言名稱或 csv.Dialect。",
+      "notes": [
+        "可覆寫 delimiter、doublequote、escapechar、skipinitialspace、quotechar 和 quoting。"
+      ]
+    },
+    {
+      "name": "on_bad_lines",
+      "type": "str | Callable",
+      "required": false,
+      "default": "'error'",
+      "description": "處理欄位過多的資料列。",
+      "accepted_values": "'error' 拋出例外，'warn' 警告後跳過，'skip' 直接跳過，或提供函式。",
+      "notes": [
+        "Callable 支援 Python 與 PyArrow 引擎，兩者使用不同的函式簽章。"
+      ]
+    },
+    {
+      "name": "low_memory",
+      "type": "bool",
+      "required": false,
+      "default": "True",
+      "description": "以較少記憶體分批剖析。",
+      "accepted_values": "True 或 False。",
+      "notes": [
+        "僅 C 引擎支援。分批推斷可能造成同欄混用型別，可指定 dtype。"
+      ]
+    },
+    {
+      "name": "memory_map",
+      "type": "bool",
+      "required": false,
+      "default": "False",
+      "description": "將路徑指定的檔案映射到記憶體讀取。",
+      "accepted_values": "True 或 False。"
+    },
+    {
+      "name": "float_precision",
+      "type": "str",
+      "required": false,
+      "default": "None",
+      "description": "指定 C 引擎的浮點數轉換模式。",
+      "accepted_values": "None、'high'、'legacy' 或 'round_trip'。",
+      "notes": [
+        "自 3.1.0 棄用，各模式目前使用相同的轉換器。"
+      ]
+    },
+    {
+      "name": "storage_options",
+      "type": "dict",
+      "required": false,
+      "default": "None",
+      "description": "傳入遠端儲存連線的額外選項。",
+      "accepted_values": "字典。",
+      "notes": [
+        "HTTP(S) 的鍵值用作請求標頭，其他 URL 則轉交 fsspec。"
+      ]
+    },
+    {
+      "name": "dtype_backend",
+      "type": "str",
+      "required": false,
+      "default": "<no_default>",
+      "description": "選擇回傳 DataFrame 的可空型別後端。",
+      "accepted_values": "'numpy_nullable' 或 'pyarrow'。",
+      "notes": [
+        "此功能為實驗性。"
+      ]
+    }
+  ],
+  "returns": {
+    "type": "DataFrame | TextFileReader",
+    "description": "一般會回傳 DataFrame；啟用分塊讀取等選項時可回傳可逐步讀取的物件。"
+  },
+  "examples": [
+    {
+      "title": "從字串讀取 CSV（不需額外檔案）",
+      "code": "import io\nimport pandas as pd\n\ncsv_text = 'name,score\\nAmy,90\\nBob,85'\ndf = pd.read_csv(io.StringIO(csv_text))\nprint(df['score'].mean())",
+      "output": "87.5",
+      "id": "basic"
+    },
+    {
+      "id": "sep",
+      "title": "以分號分隔欄位",
+      "code": "from io import StringIO\nimport pandas as pd\n\nsource = StringIO('name;score\\nAmy;90')\nprint(pd.read_csv(source, sep=';')['score'].tolist())",
+      "output": "[90]"
+    },
+    {
+      "id": "header",
+      "title": "讀取沒有標頭的檔案",
+      "code": "from io import StringIO\nimport pandas as pd\n\nsource = StringIO('Amy,90\\nBob,85')\nprint(pd.read_csv(source, header=None, names=['name', 'score'])['name'].tolist())",
+      "output": "['Amy', 'Bob']"
+    },
+    {
+      "id": "usecols",
+      "title": "只讀取 score 欄位",
+      "code": "from io import StringIO\nimport pandas as pd\n\nsource = StringIO('name,score\\nAmy,90')\nprint(pd.read_csv(source, usecols=['score']).columns.tolist())",
+      "output": "['score']"
+    }
+  ],
+  "notes": [
+    "各剖析引擎支援的選項不同。透過 iterator 或 chunksize 分批讀取時，建議以 with 管理 TextFileReader。"
+  ],
+  "source": {
+    "url": "https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html",
+    "library_version": "3.1.1",
+    "checked_at": "2026-11-16"
+  },
+  "category": "資料讀寫",
+  "syntax_short": "pandas.read_csv(filepath_or_buffer, ...)",
+  "syntax_full": "pandas.read_csv(\n    filepath_or_buffer,\n    *,\n    sep=<no_default>,\n    delimiter=<no_default>,\n    header='infer',\n    names=<no_default>,\n    index_col=None,\n    usecols=None,\n    dtype=None,\n    engine=None,\n    converters=None,\n    true_values=None,\n    false_values=None,\n    skipinitialspace=False,\n    skiprows=None,\n    skipfooter=0,\n    nrows=None,\n    na_values=None,\n    keep_default_na=True,\n    na_filter=True,\n    skip_blank_lines=True,\n    parse_dates=None,\n    date_format=None,\n    dayfirst=False,\n    cache_dates=True,\n    iterator=False,\n    chunksize=None,\n    compression='infer',\n    thousands=None,\n    decimal='.',\n    lineterminator=None,\n    quotechar='\"',\n    quoting=0,\n    doublequote=True,\n    escapechar=None,\n    comment=None,\n    encoding=None,\n    encoding_errors='strict',\n    dialect=None,\n    on_bad_lines='error',\n    low_memory=True,\n    memory_map=False,\n    float_precision=None,\n    storage_options=None,\n    dtype_backend=<no_default>,\n)",
+  "keywords": [
+    "filepath_or_buffer",
+    "sep",
+    "delimiter",
+    "header",
+    "names",
+    "index_col",
+    "usecols",
+    "dtype",
+    "engine",
+    "converters",
+    "true_values",
+    "false_values",
+    "skipinitialspace",
+    "skiprows",
+    "skipfooter",
+    "nrows",
+    "na_values",
+    "keep_default_na",
+    "na_filter",
+    "skip_blank_lines",
+    "parse_dates",
+    "date_format",
+    "dayfirst",
+    "cache_dates",
+    "iterator",
+    "chunksize",
+    "compression",
+    "thousands",
+    "decimal",
+    "lineterminator",
+    "quotechar",
+    "quoting",
+    "doublequote",
+    "escapechar",
+    "comment",
+    "encoding",
+    "encoding_errors",
+    "dialect",
+    "on_bad_lines",
+    "low_memory",
+    "memory_map",
+    "float_precision",
+    "storage_options",
+    "dtype_backend",
+    "逗號分隔",
+    "文字檔",
+    "分隔符號",
+    "欄位",
+    "缺漏值"
+  ],
+  "related_ids": []
+}
