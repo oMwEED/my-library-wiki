@@ -26,6 +26,8 @@
 
 **輕量原則**：拼字修正等小任務不需要冗長計畫；但仍需做相關、適當的檢查。
 
+四項原則的參考來源為 [Karpathy 的 Gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) 與 [社群整理的 andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)。
+
 ### 0.2 進行修改前的最小計畫
 
 對非單行的小改動，先記錄或簡述：
@@ -391,20 +393,3 @@ templates/function.template.json       函式 JSON 模板
 `讀 AGENTS.md → 查既有資料／官方來源 → 最小修改 → JSON Lint → 執行範例 → 瀏覽器測試 → 檢查 Git Diff → 經授權 Commit / Push → Pages 驗證`。
 
 新增一篇函式時，原則上**不應修改 HTML 版型**；這正是本作業展示「規則可重複使用」的核心。
-
-## 14. 給 Codex 的開發指令範例
-
-### 將既有網站更新到新版前端規格
-
-> 請先讀完 `AGENTS.md`、`README.md` 及現有 HTML/CSS/JS/JSON。先確認目前哪些新版功能尚未實作，再依照第 11 節分階段升級。不要一次不加驗證地大幅重構。每完成一階段，列出修改檔案、測試方式、測試結果與剩餘項目。以完整、可查證的參數說明與範例切換為核心，並保留 GitHub Pages 相對路徑及舊 JSON 相容性。
-
-### 使用 AI 新增函式
-
-> 請先閱讀 `AGENTS.md` 和 JSON 模板。查閱官方 NumPy API 文件，新增 `numpy.reshape()` 的繁體中文函式文件。確認參數、預設值、完整簽章、回傳值與適用版本；提供基本範例與適當的參數個別範例。建立 JSON、更新函式索引及分類，執行 `node scripts/validate.mjs`，必要時執行程式範例。不要修改既有網站版型。最後回報官方來源、版本、修改檔案和驗證情況。
-
-## 15. 參考方法論
-
-- [Karpathy 的 Gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)：作為持續整理與維護知識的概念參考；此專案保留簡單 JSON Wiki 架構，不額外導入 RAG。
-- [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)：社群整理的 Karpathy-inspired AI Coding 四原則。此儲存庫不是 Karpathy 本人的官方 AGENTS.md；本文已針對本專案重新改寫。
-
-以上參考不會覆蓋本專案的資料驗證、最小修改、使用者授權與既有 30 項視覺規範。
