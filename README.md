@@ -36,19 +36,14 @@ python -m http.server 8000
 
 在瀏覽器開啟 [本機網站](http://localhost:8000/)。網站透過 HTTP 載入 JSON，也可用 VS Code Live Server 啟動。要停止 Python 伺服器，在終端機按 `Ctrl+C`。
 
-## 讓 Codex 新增函式（重點展示）
+## 讓 Codex 新增或更新函式
 
-1. 在 Codex 開啟這個資料夾。
-2. 貼上以下指令：
+在 Codex 開啟專案根目錄後，直接輸入一句話即可。
 
-> 請先閱讀 AGENTS.md，再根據 NumPy 官方 API 文件，新增 `numpy.reshape()` 的繁體中文 Wiki 頁面。請建立符合模板的 JSON、更新 data/index.json，確認參數、預設值、回傳值和範例有官方依據，並執行 `node scripts/validate.mjs`。最後列出修改檔案、資料來源、版本與驗證情形。不要修改網站 HTML 排版。
+- 新增 `numpy.reshape()`
+- 更新 `numpy.mean()` 至 NumPy 2.5
 
-3. Codex 須能存取網路或已提供官方文件；若無法查證，應回報缺少來源，而非編造參數。
-4. 進網站搜尋 `reshape`，確認新增項目可開啟。
-
-新增函式時只需新增函式 JSON 並更新 `data/index.json`。把文件的 `category` 與 `keywords` 同步寫入索引，關鍵字涵蓋參數名稱及常見用途。若是首次收錄某個函式庫，可在索引的 `libraries` 加入名稱與簡介，函式庫卡片與收錄數量會依索引自動產生。
-
-`examples[0]` 是基本範例。用 `example_id` 對應具名範例，用 `related_ids` 引用已收錄的函式。精簡簽章填在 `syntax_short`，完整簽章填在 `syntax_full`，並保留舊版欄位 `syntax`。只有舊欄位的文件仍可呈現。
+Codex 會自動讀取專案的 [AGENTS.md](AGENTS.md)，依第 9 節查重、核對官方文件、更新函式 JSON 與索引，並驗證資料與範例。
 
 ## 資料驗證
 
